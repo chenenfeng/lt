@@ -2,7 +2,19 @@ Given an array of integers nums sorted in ascending order, find the starting and
 Your algorithm's runtime complexity must be in the order of O(log n).
 If the target is not found in the array, return [-1, -1].
 
+"""
+There is also a solution to use three binary search.
+What is important is find the most left side of the target after you have applyed a binary search method.
+Ex [1,2,8,8,8,8,8,8,8,8,8,9] you have find 8 and separate the list as [1,2,8,8,8], [8,8,8,8,8,9]
+how to find the left one and right one.
+just modify the binary search's selection condition.
+Normally, we use binary search to find the target value because nums[mid] == target
+now we must find the left side of [1,2,8,8,8] with target 8, what is charateristic of the left 8?
+That is: after we discard the left are without 8, then mid will refer 8, if nums[mid-1] < target! Bingo! mid is what we want
+then we shrink the feasible scale and return left, when right and left refer same position
+"""
 
+#This one is only fake binary search
 class Solution:
     def searchRange(self, nums, target):
         """
