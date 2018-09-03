@@ -5,7 +5,8 @@
 """
 I need to find the pivot, because no duplicate, if I use for-looper to compare number, the complexity if O(n)
 binary search's time complexity is O(logn), 
-find pivot is another job, if there is only a pivot, then I will make comparison between target with head and last value
+find pivot is another job, if there is only a pivot, then I will make comparison between target with head and last value.
+I think this problem only have 1 pivot.
 looks like whatever i should use binary search for sorted array, the pivotal thing is to translate my list as the sorted list to binanry search
 then just look at the target number in which side, in leftside, right side should be infinite, in rightside, left side shoud be -infinite
 target value is 5, then [4,5,6,7,1,2,3] become [4,5,6,7,inf,inf,inf]
