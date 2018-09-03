@@ -1,0 +1,36 @@
+9.3
+handling missing value with imputation
+from sklearn.impute import SimpleImputor()
+not the module above, now I use: from sklearn.preprocessing import Imputor(）
+it has the method .fit_transform(X_train)    .transform(X_test)
+
+#drop columns whose type are string
+cols_with_string = [col for col in X_train.columns if type(X_train[col][2]) is str]
+X_train.drop(cols_with_string)
+
+enocoding categorical variables：one-hot encoding
+train_test_split (X, y, train_size = 0.7, test_size = 0.3, random_state = 0)
+
+# "cardinality" means the number of unique values in a column(mostly, categorical).
+low_cardinality_cols = [cname for cname in candidate_train_predictors.columns if 
+                                candidate_train_predictors[cname].nunique() < 10 and
+                                candidate_train_predictors[cname].dtype == "object"]
+# take care of nunique() method and .dtype() to identify no numerical variables       
+Object indicates a column has text 
+Pandas offers a convenient function called get_dummies to get one-hot encodings.
+one_hot_encoded_training_predictors = pd.get_dummies(train_predictors)
+
+What is cross_val_score() and its parameter(like scoring =), and what is RandomForestRegressor?
+
+#take care of .select_dtypes(exclude = ['']) method!
+predictors_without_categoricals = train_predictors.select_dtypes(exclude=['object'])  #'object' must right
+
+so,
+part1: data preparation
+1. prepare data for both target and predictors
+2. dropna in target and split_train_test
+3. handle columns_with_missing to get candidate train and test data
+4. nunique< 10 to filter the columns with low cardinality and + numeric columns
+part2: one_hot_encoding to variables
+5. pd.get_dummies(train_predictor) to encode train_predictor
+6. use get_mae to calculate the mae between new train_predictor and y_train
