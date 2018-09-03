@@ -1,0 +1,44 @@
+Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
+Your algorithm's runtime complexity must be in the order of O(log n).
+If the target is not found in the array, return [-1, -1].
+
+
+class Solution:
+    def searchRange(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        
+        if nums == []:
+            return [-1, -1]
+        low = 0
+        high = len(nums) - 1
+        find_or_not = 0
+ #firstly, find that target position with binary search
+        while low <=high:
+            mid = low+(high-low)//2
+            if nums[mid] == target:
+                possible = mid
+                find_or_not =1
+                break
+            elif nums[mid] > target:
+                high = mid-1
+            else:
+                low = mid+1
+     # don't find target in lists
+        if find_or_not == 0:
+            return [-1, -1]
+    # from possible position to front and back to find the same value and move the head and last index value
+        possible_head = possible
+        possible_last = possible
+        while nums[possible_head]==target:
+            possible_head -= 1
+            if possible_head == -1:
+                break
+        while nums[possible_last]==target:
+            possible_last += 1
+            if possible_last == len(nums):
+                break
+        return [possible_head+1, possible_last-1]
