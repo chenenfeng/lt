@@ -1,0 +1,16 @@
+those who cannot remember the past are condemned to repeat it
+remember what you do in sub problems, save time
+two ways: from top to bottom,  from bottom to top
+from top to bottom: use memorandom to record the value you already have calculated
+This method still has to calculate fib(1), fib(2), fib(3), why don't calculate these values first,
+
+That's from bottom to top, firstly solve subproblems.
+from bottom to top: use array to store the result calculated, for later cycle use, but the cycle only occurs in three number.
+ for(int i=2;i<=n;i++)
+        {
+            Memo_i=Memo_i_2+Memo_i_1;
+            Memo_i_2=Memo_i_1;
+            Memo_i_1=Memo_i;
+        }  
+
+if a problem is fit for DP, if it needs to gain optimal solve, its subproblem must also gain optimal solve.
