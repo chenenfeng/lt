@@ -1,0 +1,8 @@
+nums.sort()
+then for i in range(len(nums)-2):  # because we only need to lock first n-2 elements
+hold the element nums[i], then look the sum after this element can be 0
+while right_index > left_index
+if sum >0, sum is too big, reduce right_index
+if sum <0, sum is too small, increase left_index
+if sum = 0, res.append(nums[i], nums[left_index], nums[right_index])
+then don't consider same situation, if appear same element = nums[left_index], just increase the left_index to skip this
