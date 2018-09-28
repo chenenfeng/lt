@@ -2,3 +2,49 @@ Recursion must have exiting condition
 when don't meet exiting condition, the recursion will continue until exiting condition is statisfied
 then recursion exit the last recursive process, return to previous recursive process.
 the whole executive 
+
+like mergesort:
+
+def mergesort(waited_int_listsort, left_index, right_index):
+    if left_index < right_index:
+        # needs to continue break until there is one element, which is left_index = right_index
+        new_index = (left_index+right_index)//2  #Separate original problem as same scale subproblems.
+        mergesort(waited_int_listsort, left_index, new_index)
+        mergesort(waited_int_listsort, new_index+1, right_index)  #new_index+1
+        
+        merge(waited_int_listsort, left_index, new_index, right_index)
+    return waited_int_listsort
+
+# merge function is used to merge two sorted list two one sorted list
+# right_index_of_list1+1 will be the left_index_of_list2
+
+def merge(waited_int_listsort, left_index_of_list1, right_index_of_list1, right_index_of_list2):
+#    len_of_list1 = right_index_of_list1-left_index_of_list1+1
+#    len_of_list2 = right_index_of_list2-right_index_of_list1
+    
+    # [inf] is sentinal, so when a list is remain inf, another list will pour its remain elements to A
+    list1 = waited_int_listsort[left_index_of_list1:right_index_of_list1+1]+[float("inf")]
+    list2 = waited_int_listsort[right_index_of_list1+1:right_index_of_list2+1]+[float("inf")]
+
+
+    
+    list1_merge_index = 0
+    list2_merge_index = 0
+    for merge_index in range(left_index_of_list1, right_index_of_list2+1):
+        if list1[list1_merge_index] <= list2[list2_merge_index]:
+            waited_int_listsort[merge_index] = list1[list1_merge_index]
+            list1_merge_index += 1
+        else:
+            waited_int_listsort[merge_index] = list2[list2_merge_index]
+            list2_merge_index += 1
+            
+    
+# input a no order list
+waited_listsort = input('please input a list:\n').split()
+waited_int_listsort = []
+for i in waited_listsort:
+    int_elements = int(i)
+    waited_int_listsort.append(int_elements)
+
+sorted_list = mergesort(waited_int_listsort, 0, len(waited_int_listsort)-1)    
+print(sorted_list)      
