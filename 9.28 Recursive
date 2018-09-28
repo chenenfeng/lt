@@ -1,0 +1,4 @@
+Recursion must have exiting condition
+when don't meet exiting condition, the recursion will continue until exiting condition is statisfied
+then recursion exit the last recursive process, return to previous recursive process.
+the whole executive 
