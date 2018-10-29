@@ -1,0 +1,5 @@
+1. Assign different values in list
+nums = [1,2,3,4]
+a = ['XO'[c == 2] for c in nums]
+the result will become a: ['X','O','X','X']
+
